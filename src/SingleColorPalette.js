@@ -37,10 +37,10 @@ class SingleColorPalette extends Component {
               key={color.name} 
               name={color.name} 
               background={color[this.state.format]} 
-              showLink={false}         
+              showingFullPalette={false}         
               />
           ))}
-          <div className='ColorBox go-back' >
+          <div className='go-back' >
             <Link to={`/palette/${this.props.palette.id}`} className='back-button'>Go Back</Link>
           </div>
         </div>
