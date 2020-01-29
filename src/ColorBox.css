@@ -17,6 +17,14 @@
   position: relative;
 }
 
+.light-text {
+  color: white;
+}
+
+.ColorBox .dark-text {
+  color: black;
+}
+
 .copy-button, .back-button {
   width: 100px;
   height: 30px;
