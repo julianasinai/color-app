@@ -24,7 +24,8 @@ const styles = theme => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     flexDirection: 'row',
-    jusifyContent: 'space-between',
+    justifyContent: 'space-between',
+    alignItem: 'center',
     height: '64px'
   },
   appBarShift: {
@@ -40,7 +41,16 @@ const styles = theme => ({
     marginRight: 20,
   },
   navBtns: {
-
+    marginRight: '1rem',
+    '& a': {
+      textDecoration: 'none'
+    }
+  }, 
+  button: {
+    margin: '0 0.5rem',
+  },
+  link: {
+    textDecoration: 'none'
   }
 });
 
@@ -48,14 +58,18 @@ class PaletteFormNav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newPaletteName: ''
-    }
+      newPaletteName: '', formShowing: false
+    };
     this.handleChange = this.handleChange.bind(this);
+    this.showForm = this.showForm.bind(this);
   }
   handleChange(evt) {
     this.setState({
       [evt.target.name]: evt.target.value
     });
+  }
+  showForm() {
+    this.setState({ formShowing: true });
   }
 
   render() {
@@ -85,14 +99,26 @@ class PaletteFormNav extends Component {
             </Typography>
           </Toolbar>
           <div className={classes.navBtns}>        
-            <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} />
             <Link to='/'>
-              <Button variant='contained' color='secondary'>
+              <Button 
+                variant='contained' 
+                color='secondary' 
+                className={classes.button}
+              >
                 Go Back
               </Button>
             </Link>
+            <Button
+              variant='contained'
+              color='primary'
+              className={classes.button}
+              onClick={this.showForm}
+            >
+              Save
+            </Button>
           </div>
         </AppBar>
+        {this.state.formShowing && <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} />}
       </div>
     );
   }
