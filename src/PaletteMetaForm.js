@@ -45,6 +45,7 @@ class PaletteMetaForm extends Component {
       emoji: emoji.native
     };
     this.props.handleSubmit(newPalette);
+    this.setState({ stage: ''});
   }
 
   render() {
@@ -59,7 +60,6 @@ class PaletteMetaForm extends Component {
           open={stage === 'form'}
           onClose={this.handleClose}
           aria-labelledby='form-dialog-title'
-          onClose={this.handleClose}
           >
           <DialogTitle id='form-dialog-title'>Choose a Palette Name</DialogTitle>
           <ValidatorForm

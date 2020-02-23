@@ -71,7 +71,7 @@ class PaletteList extends Component {
         >
           <DialogTitle>Delete this palette?</DialogTitle>
           <List>
-            <ListItem button onCLick={this.handleDelete}>
+            <ListItem button onClick={this.handleDelete}>
               <ListItemAvatar>
                 <Avatar style={{ background: blue[100], color: blue[600] }}>
                   <CheckIcon />
@@ -79,7 +79,7 @@ class PaletteList extends Component {
               </ListItemAvatar>
               <ListItemText primary='Delete' />
             </ListItem>
-            <ListItem button onCLick={this.closeDialog}>
+            <ListItem button onClick={this.closeDialog}>
               <ListItemAvatar>
                 <Avatar style={{ background: red[100], color: red[600] }}>
                   <CloseIcon />

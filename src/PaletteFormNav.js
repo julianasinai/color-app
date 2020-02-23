@@ -41,7 +41,7 @@ class PaletteFormNav extends Component {
         <CssBaseline />
         <AppBar
           position='fixed'
-          color='deafault'
+          color='default'
           className={classNames(classes.appBar, {
             [classes.appBarShift]: open,
           })}
