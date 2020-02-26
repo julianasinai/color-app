@@ -48,16 +48,17 @@ class ColorPickerForm extends Component {
   }
   render() {
     const { paletteIsFull, classes } = this.props;
+    const { currentColor, newColorName } = this.state;
     return(
       <div>
         <ChromePicker 
-          color={this.state.currentColor}
+          color={currentColor}
           onChangeComplete={this.updateCurrentColor}
           className={classes.picker}
         />
-        <ValidatorForm onSubmit={this.handleSubmit}>
+        <ValidatorForm onSubmit={this.handleSubmit} ref='form' instantValidate={false}>
           <TextValidator 
-            value={this.state.newColorName} 
+            value={newColorName} 
             className={classes.colorNameInput}
             placeholder='Color Name'
             name='newColorName'
@@ -72,7 +73,7 @@ class ColorPickerForm extends Component {
             type='submit'
             color='primary' 
             disabled={paletteIsFull}
-            style={{backgroundColor: paletteIsFull ? 'grey' : this.state.currentColor}}
+            style={{backgroundColor: paletteIsFull ? 'grey' : currentColor}}
             className={classes.addColor}
           >
             {paletteIsFull ? 'Palette Full' : 'Add Color'}
