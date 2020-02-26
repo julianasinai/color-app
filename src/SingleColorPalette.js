@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Navbar from './Navbar';
-import PaletteFooter from './PaletteFooter';
-import { withStyles } from '@material-ui/styles';
 import { Link } from 'react-router-dom';
-import styles from './styles/PaletteStyles';
+import { withStyles } from '@material-ui/styles';
+import Navbar from './Navbar';
 import ColorBox from './ColorBox';
+import PaletteFooter from './PaletteFooter';
+import styles from './styles/PaletteStyles';
 
 class SingleColorPalette extends Component {
   constructor(props) {
@@ -30,7 +30,8 @@ class SingleColorPalette extends Component {
     this.setState({ format: val });
   }
   render() {
-    const {classes} = this.props;
+    const { classes, palette } = this.props;
+    const { format } = this.state;
     return (
       <div className={classes.Palette}>
         <Navbar handleChange={this.changeFormat} showingAllColors={false} />
@@ -39,17 +40,17 @@ class SingleColorPalette extends Component {
             <ColorBox 
               key={color.name} 
               name={color.name} 
-              background={color[this.state.format]} 
+              background={color[format]} 
               showingFullPalette={false}         
               />
           ))}
           <div className={classes.goBack} >
-            <Link to={`/palette/${this.props.palette.id}`}>Go Back</Link>
+            <Link to={`/palette/${palette.id}`}>Go Back</Link>
           </div>
         </div>
         <PaletteFooter 
-          paletteName={this.props.palette.paletteName} 
-          emoji={this.props.palette.emoji} 
+          paletteName={palette.paletteName} 
+          emoji={palette.emoji} 
         />
       </div>
     );

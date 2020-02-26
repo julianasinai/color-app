@@ -7,9 +7,8 @@ import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Slider from 'rc-slider';
-
-import styles from './styles/NavbarStyles';
 import 'rc-slider/assets/index.css';
+import styles from './styles/NavbarStyles';
 
 class Navbar extends Component {
   constructor(props) {
@@ -27,6 +26,7 @@ class Navbar extends Component {
   }
   render() {
     const { level, changeLevel, showingAllColors, classes } = this.props;
+    const { open, format } = this.state;
     return(
       <header className={classes.Navbar}>
         <div className={classes.logo}>
@@ -58,7 +58,7 @@ class Navbar extends Component {
           </div>
         )}
         <div className={classes.selectContainer}>
-          <Select value={this.state.format} onChange={this.handleFormatChange}>
+          <Select value={format} onChange={this.handleFormatChange}>
             <MenuItem value='hex'>Hex - #fffff</MenuItem>    
             <MenuItem value='rgb'>RGB - rgb(255,255,255)</MenuItem>    
             <MenuItem value='rgba'>RGBA - rgba(255,255,255, 1.0)</MenuItem>    
@@ -66,9 +66,9 @@ class Navbar extends Component {
         </div>
         <Snackbar 
           anchorOrigin={{vertical: 'bottom', horizontal: 'left'}} 
-          open={this.state.open}
+          open={open}
           autoHideDuration={3000}
-            message={<span id='message-id'>Format changed to {this.state.format.toUpperCase()}</span>}
+            message={<span id='message-id'>Format changed to {format.toUpperCase()}</span>}
           ContentProps={{
             'aria-describedy': 'message-id' 
           }}
